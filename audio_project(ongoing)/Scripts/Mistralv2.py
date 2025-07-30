@@ -3,7 +3,7 @@ from langchain_community.llms import HuggingFacePipeline
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-
+token=
 
 def LLM_Use(model_name, max_new_tokens, temperature, input_text, instructions,tag, token=None):
     """

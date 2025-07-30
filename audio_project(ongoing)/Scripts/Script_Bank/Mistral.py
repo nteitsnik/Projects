@@ -19,7 +19,7 @@ def curate_with_languagetool(text):
 
 
 
-with open(r"C:\Users\aiane\git_repos\DS_Test\audio_project\Transcriptions\transcriptions.txt", "r", encoding="utf-8") as f:
+with open(r"C:\Users\nteits\git_repos\DS_Test\audio_project\Transcriptions\transcriptions.txt", "r", encoding="utf-8") as f:
     input_text = f.read()  
 
 result = curate_with_languagetool(input_text)
