@@ -91,7 +91,7 @@ def full_pipeline(input_text):
     temperature=0.1,
     input_text=input_text,
     instructions=instructions1, tag=tag1,
-    token='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'
+    token='..'
     )
     
     tag2='OUTPUT :\n\n'
@@ -103,7 +103,7 @@ def full_pipeline(input_text):
     temperature=0.7,
     input_text=output1,
     instructions=instructions2, tag=tag2,
-    token='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'
+    token='..'
     )
     
     model_name = 'Helsinki-NLP/opus-mt-en-el'
