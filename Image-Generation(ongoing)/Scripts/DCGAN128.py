@@ -50,7 +50,7 @@ class CelebAImagesWithAttributes(Dataset):
 
 
 dataset = CelebAImagesWithAttributes(
-    img_dir=r'C:\Users\aiane\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
+    img_dir=r'..\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
     
     transform=transform
 )

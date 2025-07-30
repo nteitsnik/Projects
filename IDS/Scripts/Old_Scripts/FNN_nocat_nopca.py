@@ -4,7 +4,7 @@ from sklearn.decomposition import PCA
 from sklearn.svm import SVC
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 from sklearn.model_selection import train_test_split
-df_train = pd.read_csv( r'C:\Users\aiane\IDS\Data\UNSW_NB15_training-set.csv\UNSW_NB15_training-set.csv',index_col=False )
+df_train = pd.read_csv( r'..\IDS\Data\UNSW_NB15_training-set.csv\UNSW_NB15_training-set.csv',index_col=False )
 
 df_train.dtypes[df_train.dtypes!= object] 
 df_train_numeric=df_train[df_train.dtypes[df_train.dtypes!= object].index]

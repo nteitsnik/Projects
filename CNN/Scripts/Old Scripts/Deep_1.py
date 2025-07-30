@@ -303,12 +303,12 @@ class SimpleCNN(nn.Module):
 
 
 
-training_dataset=CustomImageDataset(image_folder=r'C:\Users\aiane\CNN\Data\Train', transform=transform)
+training_dataset=CustomImageDataset(image_folder=r'..\CNN\Data\Train', transform=transform)
 
 training_loader = DataLoader(training_dataset, batch_size=32, shuffle=True)
 
 
-val_dataset = CustomImageDataset(image_folder=r'C:\Users\aiane\CNN\Data\Validation', transform=transform)
+val_dataset = CustomImageDataset(image_folder=r'..\CNN\Data\Validation', transform=transform)
 
 val_loader = DataLoader(val_dataset, batch_size=32, shuffle=True)
 

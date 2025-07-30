@@ -37,7 +37,7 @@ from sklearn.model_selection import GridSearchCV
 
 
 
-train = pd.read_csv(r'C:\Users\Γιώργος Μπόζιακας\train.csv')
+train = pd.read_csv(r'..\train.csv')
 stemmer = PorterStemmer()
 stop_words = set(stopwords.words("english"))
 
@@ -465,7 +465,7 @@ for model in models:
             resultsdfac.loc[model.__class__.__name__,'Bert_mean']= accuracy_score(Y_test, Y_pred) 
 
 #param grid on svc
-train = pd.read_csv(r'C:\Users\Γιώργος Μπόζιακας\train.csv')
+train = pd.read_csv(r'..\train.csv')
 model= svm.SVC()
 param_grid = {
     "C": [0.05,0.1,0.3,0.2,0.5],         # Regularization strength

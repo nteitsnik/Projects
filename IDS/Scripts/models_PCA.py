@@ -52,7 +52,7 @@ def save_classification_metrics(y_true, y_pred, save_path, average='weighted'):
 
 scaler = MinMaxScaler()
 
-folder_path = r"C:\Users\aiane\git_repos\DS_Test\IDS"
+folder_path = r"..\git_repos\DS_Test\IDS"
 
 df_1 = pd.read_csv( os.path.join(folder_path,r'Data\UNSW_NB15_training-set.csv\UNSW_NB15_training-set.csv'),index_col=False )
 df_2 = pd.read_csv(

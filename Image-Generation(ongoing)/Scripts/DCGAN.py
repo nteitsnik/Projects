@@ -50,7 +50,7 @@ class CelebAImagesWithAttributes(Dataset):
 
 
 dataset = CelebAImagesWithAttributes(
-    img_dir=r'C:\Users\aiane\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
+    img_dir=r'..\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
     
     transform=transform
 )
@@ -272,7 +272,7 @@ for epoch in range(num_epochs):
         # Convert to a PIL image
             ndarr = grid.mul(255).byte().cpu().numpy().transpose(1, 2, 0)
             image = Image.fromarray(ndarr)
-            image.save(rf"C:\Users\aiane\git_repos\DS_Test\VAE\Results\GAN_{epoch}.png")
+            image.save(rf"..\git_repos\DS_Test\VAE\Results\GAN_{epoch}.png")
 
 
 def save_checkpoint(generator, discriminator, optimizer_G, optimizer_D, epoch, path="gan_checkpoint.pth"):

@@ -19,7 +19,7 @@ import os
 
 random.seed(42)
 np.random.seed(42)
-folder_path = r"C:\Users\aiane\git_repos\DS_Test\IDS\Results"
+folder_path = r"..\git_repos\DS_Test\IDS\Results"
 
 df_train = pd.read_csv( os.path.join(folder_path,r'Data\UNSW_NB15_training-set.csv\UNSW_NB15_training-set.csv'),index_col=False )
 

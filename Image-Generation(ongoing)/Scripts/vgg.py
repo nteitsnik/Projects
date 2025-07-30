@@ -13,14 +13,14 @@ from torch.optim.lr_scheduler import StepLR
 
 
 vgg = models.vgg16()
-vgg.load_state_dict(torch.load(r"C:\Users\aiane\Downloads\vgg16-397923af.pth"))
+vgg.load_state_dict(torch.load(r"..\Downloads\vgg16-397923af.pth"))
 vgg.eval()
 
 class PerceptualLoss(nn.Module):
     def __init__(self, layers=['relu1_2', 'relu2_2'], resize=True):
         super().__init__()
         self.vgg = models.vgg16(pretrained=False)
-        self.vgg.load_state_dict(torch.load(r"C:\Users\aiane\Downloads\vgg16-397923af.pth"))  # Your .pth file
+        self.vgg.load_state_dict(torch.load(r"..\Downloads\vgg16-397923af.pth"))  # Your .pth file
         self.vgg.eval()
         
         self.resize = resize
@@ -131,8 +131,8 @@ transform = T.Compose([
 
 
 dataset = CelebAImagesWithAttributes(
-    img_dir=r'C:\Users\aiane\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
-    attr_path=r'C:\Users\aiane\DL\Celebs\archive(1)\list_attr_celeba.csv',
+    img_dir=r'..\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
+    attr_path=r'..\DL\Celebs\archive(1)\list_attr_celeba.csv',
     transform=transform
 )
 

@@ -73,8 +73,8 @@ transform = T.Compose([
 
 
 dataset = CelebAImagesWithAttributes(
-    img_dir=r'C:\Users\aiane\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
-    attr_path=r'C:\Users\aiane\DL\Celebs\archive(1)\list_attr_celeba.csv',
+    img_dir=r'..\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
+    attr_path=r'..\DL\Celebs\archive(1)\list_attr_celeba.csv',
     transform=transform
 )
 

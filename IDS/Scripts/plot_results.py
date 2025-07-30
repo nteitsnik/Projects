@@ -8,7 +8,7 @@ import numpy as np
 import glob
 
 # Path to your folder containing JSON files
-folder_path = r"C:\Users\aiane\git_repos\DS_Test\IDS\Results"
+folder_path = r"..\git_repos\DS_Test\IDS\Results"
 
 # Find all JSON files in the folder
 json_files = glob.glob(os.path.join(folder_path, "*.json"))

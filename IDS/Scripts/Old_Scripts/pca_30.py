@@ -15,7 +15,7 @@ from sklearn.model_selection import GridSearchCV
 import json
 
 
-df_train = pd.read_csv( r'C:\Users\aiane\git_repos\DS_Test\IDS\Data\UNSW_NB15_training-set.csv\UNSW_NB15_training-set.csv',index_col=False )
+df_train = pd.read_csv( r'..\git_repos\DS_Test\IDS\Data\UNSW_NB15_training-set.csv\UNSW_NB15_training-set.csv',index_col=False )
 
 
 

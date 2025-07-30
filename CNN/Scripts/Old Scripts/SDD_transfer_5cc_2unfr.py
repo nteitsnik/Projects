@@ -18,7 +18,7 @@ from torchvision import datasets
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-path = r'C:\Users\aiane\git_repo_metal\X-SDD-A-New-benchmark\X-SDD\datas'
+path = r'..\git_repo_metal\X-SDD-A-New-benchmark\X-SDD\datas'
 
 print("Path to dataset files:", path)
 

@@ -8,7 +8,7 @@ import os
 from PIL import Image
 import torchvision.utils as vutils
 from pathlib import Path
-save_dir = Path(r"C:\Users\aiane\git_repos\DS_Test\VAE\Results\WDCGAN_GP_Results")
+save_dir = Path(r"..\git_repos\DS_Test\VAE\Results\WDCGAN_GP_Results")
 save_dir.mkdir(parents=True, exist_ok=True)
 
 
@@ -53,7 +53,7 @@ class CelebAImagesWithAttributes(Dataset):
 
 
 dataset = CelebAImagesWithAttributes(
-    img_dir=r'C:\Users\aiane\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
+    img_dir=r'..\DL\Celebs\archive(1)\img_align_celeba\img_align_celeba',
     
     transform=transform
 )
@@ -301,7 +301,7 @@ for epoch in range(num_epochs):
         grid = vutils.make_grid(samples, nrow=4)
         ndarr = grid.mul(255).byte().cpu().numpy().transpose(1, 2, 0)
         image = Image.fromarray(ndarr)
-        image.save(rf"C:\Users\aiane\git_repos\DS_Test\VAE\Results\WGAN_GP_{epoch}.png")
+        image.save(rf"..\git_repos\DS_Test\VAE\Results\WGAN_GP_{epoch}.png")
 
 
 def save_checkpoint(generator, discriminator, optimizer_G, optimizer_D, epoch, path="gan_checkpoint.pth"):
