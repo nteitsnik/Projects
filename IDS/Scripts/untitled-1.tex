@@ -1,0 +1,86 @@
+\documentclass{beamer}
+
+% Theme selection:
+\usetheme{Madrid} % Choose from: Berlin, Warsaw, Frankfurt, CambridgeUS, etc.
+
+% Optional packages
+\usepackage{graphicx} % For inserting images
+\usepackage{hyperref} % For hyperlinks
+\usepackage{lipsum}   % For dummy text (optional)
+
+% Title info
+\title{My First LaTeX Beamer Presentation}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+  \frametitle{Introduction}
+  This is your first Beamer presentation. \\
+  You can add sections, frames, images, equations and more!
+\end{frame}
+
+\section{Basic Slide with Bullet Points}
+\begin{frame}
+  \frametitle{What You Can Do}
+  \begin{itemize}
+    \item Write presentation slides
+    \item Add bullet lists
+    \item Include figures and equations
+    \item Export to PDF
+  \end{itemize}
+\end{frame}
+
+\section{Adding an Image}
+\begin{frame}
+  \frametitle{Sample Image}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{example-image} % Requires example-image.png in the same folder
+  \end{center}
+\end{frame}
+
+\section{Hyperlinks and References}
+\begin{frame}
+  \frametitle{Useful Resources}
+  You can add clickable links:
+
+  \begin{itemize}
+    \item \href{https://www.latex-project.org/}{LaTeX project website}
+    \item \href{https://overleaf.com}{Overleaf: Online LaTeX Editor}
+  \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+  \frametitle{Conclusion}
+  \begin{enumerate}
+    \item Beamer is powerful for academic presentations
+    \item You can create slides using logical LaTeX structure
+    \item Customize themes and layout freely
+  \end{enumerate}
+\end{frame}
+
+% Thank you slide
+\begin{frame}
+  \frametitle{Thanks!}
+  Thank you for viewing this Beamer presentation.
+  
+  \vspace{1cm}
+  Questions?
+\end{frame}
+
+\end{document}

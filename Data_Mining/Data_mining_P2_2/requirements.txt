@@ -1,0 +1,11 @@
+numpy
+dash
+geopandas
+kagglehub
+matplotlib
+pandas
+scikit-learn
+scipy
+xlrd
+
+

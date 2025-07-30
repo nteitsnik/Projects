@@ -1,0 +1,727 @@
+
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Feb 24 11:15:14 2025
+
+@author: n.nteits
+"""
+import kagglehub
+import pandas as pd
+import numpy as np
+import re
+from nltk.tokenize import word_tokenize
+import nltk
+import pandas as pd
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+import os
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB, BernoulliNB
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn import svm
+from gensim.models import Word2Vec
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import RandomizedSearchCV
+from scipy.stats import loguniform
+import tqdm
+import pprint
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV
+from transformers import AutoTokenizer
+nltk.download('stopwords')
+
+
+train = pd.read_csv(r'C:\Users\aiane\Downloads\train.csv')
+stemmer = PorterStemmer()
+stop_words = set(stopwords.words("english"))
+
+nltk.download('stopwords')
+
+os.environ["OMP_NUM_THREADS"] = "1"
+
+nltk.download('punkt')
+
+
+nltk.data.path.append(r'C:/nltk_data')
+
+
+train.isnull().sum()
+print(train.groupby('target').count())
+print(train.groupby('keyword').count())
+
+train['text']=train['text'].str.lower()
+train['keyword']=train['keyword'].str.lower()
+
+
+
+def clean_text(text):
+        text = re.sub(r'[^a-zA-Z0-9\s]', '', text)  # Remove special characters
+        text = re.sub(r'\[.*?\]', '', text)  # Remove text in square brackets
+        text = re.sub(r"\\W", " ", text)  # Remove non-word characters
+        text = re.sub(r'https?://\S+|www\.\S+', '', text)  # Remove URLs
+        text = re.sub(r'<.*?>+', '', text)  # Remove HTML tags
+        text = re.sub(r'\w*\d\w*', '', text)  # Remove words containing numbers
+        return text.strip()
+
+def remove_stopwords(tokens):
+    return [word for word in tokens if word not in stop_words]
+   
+def text_stemmer(tokens):
+    stemmed_tokens = [stemmer.stem(word) for word in tokens]
+    return stemmed_tokens
+  
+train['text']=train['text'].apply(clean_text)  
+train['tokens'] = train['text'].apply(lambda x: x.split())
+train['tokens'] = train['tokens'].apply(remove_stopwords)
+train['tokens'] = train['tokens'].apply(text_stemmer)
+train = train.sample(frac=1, random_state=1).reset_index(drop=True)
+
+train['clean_text'] = train['tokens'].apply(lambda tokens: ' '.join(tokens))
+
+
+
+logistic_model = LogisticRegression()
+lasso_model = LogisticRegression(penalty='l1', C=0.1, solver='liblinear')
+lasso_model.__class__.__name__='lasso'
+ridge_model = LogisticRegression(penalty='l2', C=0.1)
+ridge_model.__class__.__name__='ridge'
+dt_classifier = DecisionTreeClassifier(random_state=42)
+
+
+
+models=[ MultinomialNB(),logistic_model,lasso_model,ridge_model,dt_classifier,svm.SVC()]
+
+
+
+
+vectorizers=[CountVectorizer(binary=True)]
+Y = train['target']
+resultsdfac=pd.DataFrame()
+for vectorizer in vectorizers:  
+    X_train, X_test, Y_train, Y_test = train_test_split(train['clean_text'], Y, test_size=0.2, random_state=2)
+    X_train = vectorizer.fit_transform(X_train)
+    X_test = vectorizer.transform(X_test)
+    Y_train = np.vectorize(lambda x: pd.to_numeric(x, errors='coerce'))(Y_train)
+    Y_test = np.vectorize(lambda x: pd.to_numeric(x, errors='coerce'))(Y_test)
+    for model in models:
+        model.fit(X_train, Y_train)
+        Y_pred = model.predict(X_test)
+        if model==lasso_model :
+            resultsdfac.loc['lasso','Binary'] = accuracy_score(Y_test, Y_pred)
+        elif model==ridge_model:
+            resultsdfac.loc['ridge','Binary']= accuracy_score(Y_test, Y_pred)
+        elif  model==logistic_model:
+            resultsdfac.loc['logistic','Binary'] = accuracy_score(Y_test, Y_pred) 
+        else:
+            resultsdfac.loc[model.__class__.__name__,'Binary']= accuracy_score(Y_test, Y_pred) 
+
+
+vectorizers=[CountVectorizer(binary=False),TfidfVectorizer()]
+''',svm.SVC()'''
+models=[ MultinomialNB(),logistic_model,lasso_model,ridge_model,dt_classifier,svm.SVC()]
+
+Y = train['target']
+
+for vectorizer in vectorizers:  
+    X_train, X_test, Y_train, Y_test = train_test_split(train['clean_text'], Y, test_size=0.2, random_state=2)
+    X_train = vectorizer.fit_transform(X_train)
+    X_test = vectorizer.transform(X_test)
+    Y_train = np.vectorize(lambda x: pd.to_numeric(x, errors='coerce'))(Y_train)
+    Y_test = np.vectorize(lambda x: pd.to_numeric(x, errors='coerce'))(Y_test)
+    for model in models:
+        model.fit(X_train, Y_train)
+        Y_pred = model.predict(X_test)
+        if model==lasso_model :
+            resultsdfac.loc['lasso',vectorizer.__class__.__name__] = accuracy_score(Y_test, Y_pred)
+        elif model==ridge_model:
+            resultsdfac.loc['ridge',vectorizer.__class__.__name__]= accuracy_score(Y_test, Y_pred)
+        elif  model==logistic_model:
+            resultsdfac.loc['logistic',vectorizer.__class__.__name__] = accuracy_score(Y_test, Y_pred) 
+        else:
+            resultsdfac.loc[model.__class__.__name__,vectorizer.__class__.__name__]= accuracy_score(Y_test, Y_pred) 
+
+
+
+
+def get_average_word2vec(tokens_list, w2vec, vector_size=300):
+  
+    # Filter out words not in the Word2Vec vocabulary
+    valid_words = [w2vec.wv[word] for word in tokens_list if word in w2vec.wv]
+
+    # If no valid words, return a zero vector
+    if not valid_words:
+        return np.zeros(vector_size)
+    
+    # Calculate the mean of valid word vectors
+    tmp = np.vstack(valid_words)  # Stack vectors vertically
+    result = np.mean(tmp, axis=0)  # Calculate mean across rows
+    return result
+    # If no valid words, return a zero vector of the desired size
+
+models=[ logistic_model,lasso_model,ridge_model,dt_classifier,svm.SVC()]  
+X_train, X_test, Y_train, Y_test = train_test_split(train['tokens'], Y, test_size=0.2, random_state=2)
+w2vec = Word2Vec(sentences=X_train, vector_size=300, window=5, min_count=1, workers=6)
+
+
+Train_trans=np.zeros((len(X_train),300))
+Test_trans=np.zeros((len(X_test),300))
+i=0
+for idx in X_train.index :     
+    Train_trans[i,:] = get_average_word2vec(X_train[idx], w2vec) 
+    i=i+1
+       
+i=0
+for idx in X_test.index :   
+    
+    Test_trans[i,:] = get_average_word2vec(X_test[idx], w2vec) 
+    i=i+1
+    
+Y_train = np.vectorize(lambda x: pd.to_numeric(x, errors='coerce'))(Y_train)
+Y_test = np.vectorize(lambda x: pd.to_numeric(x, errors='coerce'))(Y_test)
+for model in models:
+        model.fit(Train_trans, Y_train)
+        Y_pred = model.predict(Test_trans)
+        if model==lasso_model :
+            resultsdfac.loc['lasso','word2vec'] = accuracy_score(Y_test, Y_pred)
+        elif model==ridge_model:
+            resultsdfac.loc['ridge','word2vec']= accuracy_score(Y_test, Y_pred)
+        elif  model==logistic_model:
+            resultsdfac.loc['logistic','word2vec'] = accuracy_score(Y_test, Y_pred) 
+        else:
+            resultsdfac.loc[model.__class__.__name__,'word2vec']= accuracy_score(Y_test, Y_pred) 
+
+model= MultinomialNB()
+param_grid = {
+    'classifier__alpha': [0.001,0.01,0.1, 0.5, 1.0, 2.0, 5.0]  # Try different alpha values
+}
+
+
+pipeline = Pipeline([
+    ('vectorizer', CountVectorizer(binary=True)),  # Convert text to numerical features
+    ('classifier', BernoulliNB())     # Multinomial Naïve Bayes classifier
+])
+
+# Perform GridSearchCV
+grid_search = GridSearchCV(pipeline, param_grid, cv=5, scoring='accuracy', n_jobs=-1)
+grid_search.fit(train['text'], train['target'])
+
+print("Best accuracy:", grid_search.best_score_)
+
+
+#tf-iDF with 1-2grams
+vectorizers = [TfidfVectorizer(ngram_range=(1, 2))]
+models=[ MultinomialNB(),logistic_model,lasso_model,ridge_model,dt_classifier,svm.SVC()]
+
+Y = train['target']
+for vectorizer in vectorizers:  
+    X_train, X_test, Y_train, Y_test = train_test_split(train['clean_text'], Y, test_size=0.2, random_state=2)
+    X_train = vectorizer.fit_transform(X_train)
+    X_test = vectorizer.transform(X_test)
+    Y_train = np.vectorize(lambda x: pd.to_numeric(x, errors='coerce'))(Y_train)
+    Y_test = np.vectorize(lambda x: pd.to_numeric(x, errors='coerce'))(Y_test)
+    for model in models:
+        model.fit(X_train, Y_train)
+        Y_pred = model.predict(X_test)
+        if model==lasso_model :
+            resultsdfac.loc['lasso','bi tfidf'] = accuracy_score(Y_test, Y_pred)
+        elif model==ridge_model:
+            resultsdfac.loc['ridge','bi tfidf']= accuracy_score(Y_test, Y_pred)
+        elif  model==logistic_model:
+            resultsdfac.loc['logistic','bi tfidf'] = accuracy_score(Y_test, Y_pred) 
+        else:
+            resultsdfac.loc[model.__class__.__name__,'bi tfidf']= accuracy_score(Y_test, Y_pred) 
+
+def load_glove_embeddings(glove_file):
+    embeddings_index = {}
+    with open(glove_file, "r", encoding="utf-8") as f:
+        for line in f:
+            values = line.split()
+            word = values[0]
+            vector = np.array(values[1:], dtype="float32")
+            embeddings_index[word] = vector
+    return embeddings_index
+
+#200d
+glove_path = r"./glove.twitter.27B/glove.twitter.27B.200d.txt"  # Adjust if needed
+glove_embeddings = load_glove_embeddings(glove_path)
+
+def get_tweet_embedding(tweet, embeddings_dict, dim=200):
+    words = tweet.split()
+    vectors = [embeddings_dict[word] for word in words if word in embeddings_dict]
+    return np.mean(vectors, axis=0) if vectors else np.zeros(dim)
+
+X_train, X_test, Y_train, Y_test = train_test_split(train['clean_text'], Y, test_size=0.2, random_state=2)
+
+
+
+Train_trans=np.zeros((len(X_train),200))
+Test_trans=np.zeros((len(X_test),200))
+
+
+i=0
+for idx in X_train.index :     
+    Train_trans[i,:] = np.array(get_tweet_embedding(X_train[idx], glove_embeddings, dim=200)) 
+    i=i+1
+       
+i=0
+for idx in X_test.index :   
+    
+    Test_trans[i,:] = np.array(get_tweet_embedding(X_test[idx], glove_embeddings, dim=200)) 
+    i=i+1
+
+
+models=[ logistic_model,lasso_model,ridge_model,dt_classifier,svm.SVC()]  
+for model in models:
+        model.fit(Train_trans, Y_train)
+        Y_pred = model.predict(Test_trans)
+        if model==lasso_model :
+            resultsdfac.loc['lasso','Glove 200D'] = accuracy_score(Y_test, Y_pred)
+        elif model==ridge_model:
+            resultsdfac.loc['ridge','Glove 200D']= accuracy_score(Y_test, Y_pred)
+        elif  model==logistic_model:
+            resultsdfac.loc['logistic','Glove 200D'] = accuracy_score(Y_test, Y_pred) 
+        else:
+            resultsdfac.loc[model.__class__.__name__,'Glove 200D']= accuracy_score(Y_test, Y_pred) 
+
+#Universal Sentense Encoder
+import tensorflow_hub as hub
+use_model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
+
+def get_tweet_embedding(tweet):
+    return use_model([tweet]).numpy()[0]
+
+X_train, X_test, Y_train, Y_test = train_test_split(train['clean_text'], Y, test_size=0.2, random_state=2)
+
+
+
+Train_trans=np.zeros((len(X_train),512))
+Test_trans=np.zeros((len(X_test),512))
+
+
+i=0
+for idx in X_train.index :     
+    Train_trans[i,:] = np.array(get_tweet_embedding(X_train[idx]))
+    i=i+1
+       
+i=0
+for idx in X_test.index :   
+    
+    Test_trans[i,:] = np.array(get_tweet_embedding(X_test[idx]))
+    i=i+1
+
+models=[ logistic_model,lasso_model,ridge_model,dt_classifier,svm.SVC()]  
+for model in models:
+        model.fit(Train_trans, Y_train)
+        Y_pred = model.predict(Test_trans)
+        if model==lasso_model :
+            resultsdfac.loc['lasso','USE'] = accuracy_score(Y_test, Y_pred)
+        elif model==ridge_model:
+            resultsdfac.loc['ridge','USE']= accuracy_score(Y_test, Y_pred)
+        elif  model==logistic_model:
+            resultsdfac.loc['logistic','USE'] = accuracy_score(Y_test, Y_pred) 
+        else:
+            resultsdfac.loc[model.__class__.__name__,'USE']= accuracy_score(Y_test, Y_pred) 
+
+# Load the Transformer-based Universal Sentence Encoder
+use_model = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
+
+def get_tweet_embedding(tweet):
+    return use_model([tweet]).numpy()[0]
+
+X_train, X_test, Y_train, Y_test = train_test_split(train['clean_text'], Y, test_size=0.2, random_state=2)
+
+
+
+Train_trans=np.zeros((len(X_train),512))
+Test_trans=np.zeros((len(X_test),512))
+
+
+i=0
+for idx in X_train.index :     
+    Train_trans[i,:] = np.array(get_tweet_embedding(X_train[idx]))
+    i=i+1
+       
+i=0
+for idx in X_test.index :   
+    
+    Test_trans[i,:] = np.array(get_tweet_embedding(X_test[idx]))
+    i=i+1
+
+models=[ logistic_model,lasso_model,ridge_model,dt_classifier,svm.SVC()]  
+for model in models:
+        model.fit(Train_trans, Y_train)
+        Y_pred = model.predict(Test_trans)
+        if model==lasso_model :
+            resultsdfac.loc['lasso','USE_T'] = accuracy_score(Y_test, Y_pred)
+        elif model==ridge_model:
+            resultsdfac.loc['ridge','USE_T']= accuracy_score(Y_test, Y_pred)
+        elif  model==logistic_model:
+            resultsdfac.loc['logistic','USE_T'] = accuracy_score(Y_test, Y_pred) 
+        else:
+            resultsdfac.loc[model.__class__.__name__,'USE_T']= accuracy_score(Y_test, Y_pred) 
+
+#Bert
+from transformers import AutoTokenizer, AutoModel
+import torch
+print(torch.__version__)
+import transformers
+print(transformers.__version__)
+from transformers import is_torch_available
+print(is_torch_available())
+
+# Load BERT tokenizer and model
+tokenizer = AutoTokenizer.from_pretrained("vinai/bertweet-base")
+model = AutoModel.from_pretrained("vinai/bertweet-base")
+
+def get_tweet_embedding(tweet):
+    tokens = tokenizer(tweet, return_tensors="pt", padding=True, truncation=True, max_length=128)
+    with torch.no_grad():
+        output = model(**tokens)  # Get BERT output
+    
+    word_embeddings = output.last_hidden_state # Use CLS token embedding
+    return torch.mean(word_embeddings, dim=1) 
+
+X_train, X_test, Y_train, Y_test = train_test_split(train['clean_text'], Y, test_size=0.2, random_state=2)
+
+
+
+Train_trans=np.zeros((len(X_train),768))
+Test_trans=np.zeros((len(X_test),768))
+
+
+i=0
+for idx in X_train.index :     
+    Train_trans[i,:] = np.array(get_tweet_embedding(X_train[idx]))
+    i=i+1
+       
+i=0
+for idx in X_test.index :   
+    
+    Test_trans[i,:] = np.array(get_tweet_embedding(X_test[idx]))
+    i=i+1
+    
+models=[ logistic_model,lasso_model,ridge_model,dt_classifier,svm.SVC()]  
+for model in models:
+        model.fit(Train_trans, Y_train)
+        Y_pred = model.predict(Test_trans)
+        if model==lasso_model :
+            resultsdfac.loc['lasso','Bert_mean'] = accuracy_score(Y_test, Y_pred)
+        elif model==ridge_model:
+            resultsdfac.loc['ridge','Bert_mean']= accuracy_score(Y_test, Y_pred)
+        elif  model==logistic_model:
+            resultsdfac.loc['logistic','Bert_mean'] = accuracy_score(Y_test, Y_pred) 
+        else:
+            resultsdfac.loc[model.__class__.__name__,'Bert_mean']= accuracy_score(Y_test, Y_pred) 
+
+#param grid on svc
+train = pd.read_csv(r'C:\Users\Γιώργος Μπόζιακας\train.csv')
+model= svm.SVC()
+param_grid = {
+    "C": [0.05,0.1,0.3,0.2,0.5],         # Regularization strength
+    "kernel": ["linear", "rbf"],  # Kernel types
+    "gamma": ["scale", "auto"]   # Kernel coefficient for 'rbf'
+}
+
+
+use_model = hub.load("https://tfhub.dev/google/universal-sentence-encoder-large/5")
+
+def get_tweet_embedding(tweet):
+    return use_model([tweet]).numpy()[0]
+
+train['text']=train['text'].apply(clean_text)  
+train['tokens'] = train['text'].apply(lambda x: x.split())
+train['tokens'] = train['tokens'].apply(remove_stopwords)
+train['tokens'] = train['tokens'].apply(text_stemmer)
+train = train.sample(frac=1, random_state=1).reset_index(drop=True)
+
+train['clean_text'] = train['tokens'].apply(lambda tokens: ' '.join(tokens))
+
+Train_trans=np.zeros((len(train),512))
+Y=train['target']
+
+
+i=0
+for idx in train.index :     
+    Train_trans[i,:] = np.array(get_tweet_embedding(train.loc[idx,'clean_text']))
+    i=i+1
+       
+
+
+
+# Perform GridSearchCV
+grid_search = GridSearchCV(model, param_grid, cv=5, scoring='accuracy', n_jobs=-1)
+grid_search.fit(Train_trans, Y)
+
+print("Best accuracy:", grid_search.best_score_)
+grid_search.best_params_
+
+
+#Fine Tune Roberta
+
+
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModel
+from transformers import TrainingArguments, Trainer
+from datasets import Dataset
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+from transformers import RobertaTokenizer, RobertaForSequenceClassification
+import torch
+from torch.utils.data import DataLoader, Dataset
+from torch.optim import AdamW
+from tqdm import tqdm
+from transformers import RobertaModel, RobertaConfig
+from torch import nn
+import torch.optim as optim
+
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
+
+train = pd.read_csv(r'C:\Users\aiane\Downloads\train.csv')
+stemmer = PorterStemmer()
+stop_words = set(stopwords.words("english"))
+
+nltk.download('stopwords')
+
+os.environ["OMP_NUM_THREADS"] = "1"
+
+nltk.download('punkt')
+
+
+nltk.data.path.append(r'C:/nltk_data')
+
+
+train.isnull().sum()
+print(train.groupby('target').count())
+print(train.groupby('keyword').count())
+
+train['text']=train['text'].str.lower()
+train['keyword']=train['keyword'].str.lower()
+
+
+
+def clean_text(text):
+        text = re.sub(r'[^a-zA-Z0-9\s]', '', text)  # Remove special characters
+        text = re.sub(r'\[.*?\]', '', text)  # Remove text in square brackets
+        text = re.sub(r"\\W", " ", text)  # Remove non-word characters
+        text = re.sub(r'https?://\S+|www\.\S+', '', text)  # Remove URLs
+        text = re.sub(r'<.*?>+', '', text)  # Remove HTML tags
+        text = re.sub(r'\w*\d\w*', '', text)  # Remove words containing numbers
+        return text.strip()
+
+def remove_stopwords(tokens):
+    return [word for word in tokens if word not in stop_words]
+   
+def text_stemmer(tokens):
+    stemmed_tokens = [stemmer.stem(word) for word in tokens]
+    return stemmed_tokens
+
+
+
+train['text']=train['text'].apply(clean_text)  
+train['tokens'] = train['text'].apply(lambda x: x.split())
+train['tokens'] = train['tokens'].apply(remove_stopwords)
+train['tokens'] = train['tokens'].apply(text_stemmer)
+train = train.sample(frac=1, random_state=1).reset_index(drop=True)
+
+train['clean_text'] = train['tokens'].apply(lambda tokens: ' '.join(tokens))
+
+df1=train[['clean_text','target']]
+
+
+class TweetDataset(Dataset):
+    def __init__(self, df, tokenizer, max_len=128):
+        self.df = df
+        self.tokenizer = tokenizer
+        self.max_len = max_len
+        
+    def __len__(self):
+        return len(self.df)
+    
+    def __getitem__(self, idx):
+        text = self.df.iloc[idx]['clean_text']
+        label = self.df.iloc[idx]['target']
+        
+        encoding = self.tokenizer(
+            text,
+            max_length=self.max_len,
+            padding="max_length",
+            truncation=True,
+            return_tensors="pt"
+        )
+        
+        # Each item is squeezed to remove batch dimension
+        return {
+            "input_ids": encoding["input_ids"].squeeze(0),
+            "attention_mask": encoding["attention_mask"].squeeze(0),
+            "labels": torch.tensor(label, dtype=torch.float)
+        }
+
+train_dataset = TweetDataset(df1, tokenizer)
+val_dataset = TweetDataset(df1, tokenizer)
+
+train_loader = DataLoader(train_dataset, batch_size=8, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=8)
+
+
+
+
+class RobertaBinaryClassifier(nn.Module):
+    def __init__(self, pretrained_model_name="cardiffnlp/twitter-roberta-base", dropout=0.1):
+        super().__init__()
+        self.roberta = RobertaModel.from_pretrained(pretrained_model_name)
+        hidden_size = self.roberta.config.hidden_size  # usually 768 for base roberta
+        
+        # Classification head
+        self.classifier = nn.Sequential(
+            nn.Dropout(dropout),
+            nn.Linear(hidden_size, 1)  # output 1 logit for binary classification
+        )
+    
+    def forward(self, input_ids, attention_mask):
+        outputs = self.roberta(input_ids=input_ids, attention_mask=attention_mask)
+        # Use the pooled output (embedding of [CLS] token)
+        pooled_output = outputs.pooler_output  # shape: (batch_size, hidden_size)
+        
+        logits = self.classifier(pooled_output)  # shape: (batch_size, 1)
+        return logits.squeeze(-1)  # shape: (batch_size,)
+
+# Example usage:
+model = RobertaBinaryClassifier()
+
+
+def train_epoch(model, dataloader, optimizer, criterion, device):
+    model.train()
+    losses = []
+    all_preds = []
+    all_labels = []
+
+    for batch in dataloader:
+        input_ids = batch["input_ids"].to(device)
+        attention_mask = batch["attention_mask"].to(device)
+        labels = batch["labels"].to(device)
+
+        optimizer.zero_grad()
+        outputs = model(input_ids, attention_mask)
+        
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+
+        losses.append(loss.item())
+
+        preds = torch.sigmoid(outputs).round()
+        all_preds.extend(preds.cpu().detach().numpy())
+        all_labels.extend(labels.cpu().numpy())
+
+    acc = accuracy_score(all_labels, all_preds)
+    
+    return sum(losses) / len(losses), acc
+
+def eval_epoch(model, dataloader, criterion, device):
+    model.eval()
+    losses = []
+    all_preds = []
+    all_labels = []
+
+    with torch.no_grad():
+        for batch in dataloader:
+            input_ids = batch["input_ids"].to(device)
+            attention_mask = batch["attention_mask"].to(device)
+            labels = batch["labels"].to(device)
+
+            outputs = model(input_ids, attention_mask)
+            loss = criterion(outputs, labels)
+            losses.append(loss.item())
+
+            preds = torch.sigmoid(outputs).round()
+            all_preds.extend(preds.cpu().numpy())
+            all_labels.extend(labels.cpu().numpy())
+
+    acc = accuracy_score(all_labels, all_preds)
+    
+    return sum(losses) / len(losses), acc
+
+
+
+criterion = nn.BCEWithLogitsLoss()
+
+# Optimizer: Adam, passing model parameters and a learning rate
+optimizer = optim.Adam(model.parameters(), lr=2e-5)
+num_epochs = 5  # or however many you want
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+model.to(device)
+
+for epoch in range(num_epochs):
+    train_loss, train_acc = train_epoch(model, train_loader, optimizer, criterion, device)
+    val_loss, val_acc = eval_epoch(model, val_loader, criterion, device)
+    
+    print(f"Epoch {epoch+1}/{num_epochs}")
+    print(f"Train Loss: {train_loss:.4f} | Train Acc: {train_acc:.4f}")
+    print(f"Val Loss: {val_loss:.4f} | Val Acc: {val_acc:.4f}\n")
+
+
+torch.save(model.state_dict(), r"C:\Users\aiane\git_repos\DS_Test\Kaggle_tweets\Kaggle_tweets\roberta_weights.pth")
+
+
+resultsdfac
+
+df_stacked = resultsdfac.stack()
+df_stacked.index = [f"{i}_{j}" for i, j in df_stacked.index]
+result = df_stacked.reset_index()
+result.columns = ['Model', 'Acc']
+custom_row = pd.DataFrame([{'Model': 'Roberta', 'Acc': val_acc}])
+final_result = pd.concat([result, custom_row], ignore_index=True)
+
+
+top10 = final_result.sort_values(by='Acc', ascending=False).head(10)
+
+
+import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+norm = mcolors.Normalize(vmin=top10['Acc'].min(), vmax=top10['Acc'].max())
+cmap = plt.cm.Blues
+colors = cmap(norm(top10['Acc']))
+plt.style.use('ggplot')
+fig, ax = plt.subplots(figsize=(8,6))
+
+bars = ax.barh(
+    top10['Model'],
+    top10['Acc'],
+    
+    edgecolor='black',
+    color=colors
+)
+
+# Reverse the order so highest is at the top
+ax.invert_yaxis()
+
+# Add value labels to the right of bars
+for bar in bars:
+    width = bar.get_width()
+    ax.annotate(
+        f'{width:.2f}',
+        xy=(width, bar.get_y() + bar.get_height() / 2),
+        xytext=(5, 0),
+        textcoords='offset points',
+        ha='left',
+        va='center',
+        fontsize=11,
+        fontweight='bold'
+    )
+
+# Titles and labels
+ax.set_title('Top 10 Performers', fontsize=16, fontweight='bold')
+ax.set_xlabel('Accuracy', fontsize=14)
+ax.set_ylabel('Model', fontsize=14)
+
+plt.tight_layout()
+plt.savefig(r'C:\Users\aiane\git_repos\DS_Test\Kaggle_tweets\Kaggle_tweets\top10_performers_blue.png', dpi=300, bbox_inches='tight')
+plt.show()

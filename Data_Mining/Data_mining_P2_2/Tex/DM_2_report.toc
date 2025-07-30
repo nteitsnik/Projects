@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Outlline of the Problem}{3}{0}{1}
+\beamer@sectionintoc {2}{The Dataset}{5}{0}{2}
+\beamer@sectionintoc {3}{EDA}{8}{0}{3}
+\beamer@sectionintoc {4}{Analysis}{13}{0}{4}
+\beamer@sectionintoc {5}{Results}{16}{0}{5}
+\beamer@sectionintoc {6}{Visual Representation}{20}{0}{6}

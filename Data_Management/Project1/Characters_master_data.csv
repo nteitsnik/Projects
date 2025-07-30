@@ -1,0 +1,388 @@
+ID,characterName,actorName0,actorName1,houseName,nickname,royal,Is_animal_Flag
+0,Addam Marbrand,B.J. Hogg,,,,False,False
+1,Aegon Targaryen,Ty Tennant,Tom Glynn-Carney,Targaryen,,True,False
+2,Aeron Greyjoy,Michael Feast,,Greyjoy,Damphair,False,False
+3,Aerys II Targaryen,David Rintoul,,Targaryen,The Mad King,True,False
+4,Akho,Chuku Modu,,,,False,False
+5,Alliser Thorne,Owen Teale,,,,False,False
+6,Alton Lannister,Karl Davies,,Lannister,,False,False
+7,Alys Karstark,Megan Parkinson,,,,False,False
+8,Amory Lorch,Fintan McKeown,,,,False,False
+9,Anguy,Philip McGinley,,,,False,False
+10,Archmaester Marwyn,Jim Broadbent,,,,False,False
+11,Areo Hotah,Deobia Oparei,,,,False,False
+12,Armeca,Sahara Knite,,,,False,False
+13,Arthur,Nathanael Saleh,,,,False,False
+14,Arthur Dayne,Luke Roberts,,,,False,False
+15,Arya Stark,Maisie Williams,,Stark,,False,False
+16,Baby Sam,William Wilson,James Wilson,,,False,False
+17,Balon Greyjoy,Patrick Malahide,,Greyjoy,,False,False
+18,Baratheon Guard,Phil Barnhill,,Baratheon,,False,False
+19,Barristan Selmy,Ian McElhinney,,,,False,False
+20,Benjen Stark,Joseph Mawle,,Stark,,False,False
+21,Beric Dondarrion,Richard Dormer,David Michael Scott,,,False,False
+22,Bianca,Eline Powell,,,,False,False
+23,Biter,Gerard Jordan,,,,False,False
+24,Black Lorren,Forbes KB,,,,False,False
+25,Black Walder Rivers,Tim Plester,,Frey,,False,False
+26,Bobono,Leigh Gill,,,,False,False
+27,Bowen Marsh,Michael Condron,,,,False,False
+28,Bran Stark,Isaac Hempstead Wright,,Stark,,True,False
+29,Brea,Gemita Samarra,,,,False,False
+30,Brienne of Tarth,Gwendoline Christie,,,,False,False
+31,Bronn,Jerome Flynn,,,,False,False
+32,Brother Ray,Ian McShane,,,,False,False
+33,Brynden Tully,Clive Russell,,Tully,Blackfish,False,False
+34,Captain of the Archers,Michael Grennell,,,,False,False
+35,Catelyn Stark,Michelle Fairley,,Stark,,False,False
+36,Catspaw Assassin,Lalor Roddy,,,,False,False
+37,Cersei Lannister,Lena Headey,,Lannister,,True,False
+38,Child of the Forest,Alice Hewkin,,,,False,False
+39,Citadel Maester,Frank Hvam,,,,False,False
+40,Colen of Greenpools,Darren Killeen,,,,False,False
+41,Craster,Robert Pugh,,,,False,False
+42,Daario Naharis,Ed Skrein,Michiel Huisman,,,False,False
+43,Daenerys Targaryen,Emilia Clarke,,Targaryen,,True,False
+44,Dagmer Cleftjaw,Ralph Ineson,,,,False,False
+45,Daisy,Maisie Dee,,,,False,False
+46,Davos Seaworth,Liam Cunningham,,,,False,False
+47,Dickon Tarly,Freddie Stroma,Tom Hopper,,,False,False
+48,Dongo the Giant,Ian Whyte,,,,False,False
+49,Donnel Waynwood,Alisdair Simpson,,,,False,False
+50,Dontos Hollard,Tony Way,,,,False,False
+51,Doran Martell,Alexander Siddig,,Martell,,False,False
+52,Doreah,Roxanne McKee,,,,False,False
+53,Dothraki Bloodrider  1,Diogo Sales,,,,False,False
+54,Dothraki Bloodrider  2,Junade Khan,,,,False,False
+55,Drennan,David Coakley,,,,False,False
+56,Drogon,,,Targaryen,,False,True
+57,Drowned Priest,Jonathan Ryan,,,,False,False
+58,Eddard Stark,Sean Bean,,Stark,Ned,False,False
+59,Eddison Tollett,Ben Crompton,,,,False,False
+60,Edmure Tully,Tobias Menzies,,Tully,,False,False
+61,Ellaria Sand,Indira Varma,,Martell,,False,False
+62,Elia Martell,,,Martell,,True,False
+63,Eon Hunter,Barrington Cullen,,,,False,False
+64,Euron Greyjoy,Pilou Asbæk,,Greyjoy,,False,False
+65,Faceless Man,Cedric Henderson,,,,False,False
+66,Farlen,Peter Ballance,,,,False,False
+67,Gared,Dermot Keaney,,,,False,False
+68,Gatins,Ricky Champ,,,,False,False
+69,Gendry,Joe Dempsie,,Baratheon,,False,False
+70,Gerold Hightower,Eddie Eyre,,,,False,False
+71,Ghost,,,Stark,,False,True
+72,Gilly,Hannah Murray,,,,False,False
+73,Goldcloak,Alan Paris,,,,False,False
+74,Goldcloak,Sam Callis,,,,False,False
+75,Goldcloak  1,Nikovich Sammut,,,,False,False
+76,Goldcloak  2,Seamus Kelly,,,,False,False
+77,Grand Maester Pycelle,Julian Glover,,,,False,False
+78,Great Master  1,Emilio Doorgasingh,Gianpiero Cognoli,,,False,False
+79,Great Master  2,Derek Horsham,Bobby Asghar,,,False,False
+80,Great Master  3,Peter Silverleaf,,,,False,False
+81,Great Master  4,Davor Jozinovic,,,,False,False
+82,Great Master  5,Ivan Peric,,,,False,False
+83,Great Master  6,Hadi Kermani,,,,False,False
+84,Great Master  7,Tonci Banov,,,,False,False
+85,Greatjon Umber,Clive Mantle,,,,False,False
+86,Gregor Clegane,Ian Whyte,Conan Stevens,,The Mountain,False,False
+87,Greizhen mo Ullhor,Cliff Barry,,,,False,False
+88,Grenn,Mark Stanley,,,,False,False
+89,Grey Wind,,,Stark,,False,True
+90,Grey Worm,Jacob Anderson,,,,False,False
+91,Hallyne,Roy Dotrice,,,,False,False
+92,Handmaid,Sabrina Bartlett,,,,False,False
+93,Handmaid,Sara Dylan,,,,False,False
+94,Harald Karstark,Paul Rattray,,,,False,False
+95,Harry Strickland,Marc Rissmann,,,,False,False
+96,High Priestess,Souad Faress,,,,False,False
+97,High Septon,David Verrey,,,,False,False
+98,High Septon,Paul Bentley,,,,False,False
+99,High Sparrow,Jonathan Pryce,,,,False,False
+100,Hizdahr zo Loraq,Joel Fry,,,,False,False
+101,Hodor,Kristian Nairn,,,,False,False
+102,Hoster Tully,Christopher Newman,,Tully,,False,False
+103,Hot Pie,Ben Hawkey,,,,False,False
+104,Howland Reed,Leo Woodruff,,,,False,False
+105,Hugh of the Vale,Jefferson Hall,,,,False,False
+106,Illyrio Mopatis,Roger Allam,,,,False,False
+107,Ilyn Payne,Wilko Johnson,,,,False,False
+108,Irri,Amrita Acharia,,,,False,False
+109,Izembaro,Richard E. Grant,,,,False,False
+110,Jacks,Paul Caddell,,,,False,False
+111,Jafer Flowers,James Cosmo,,,,False,False
+112,Jaime Lannister,Nikolaj Coster-Waldau,,Lannister,The Kingslayer,False,False
+113,Janos Slynt,Dominic Carter,,,,False,False
+114,Jaqen H'ghar,Tom Wlaschiha,,,,False,False
+115,Jaqen's Disguise,Patrick O'Kane,,,,False,False
+116,Jaremy Rykker,Jeffrey O'Brien,,,,False,False
+117,Jeor Mormont,James Cosmo,,Mormont,,False,False
+118,Jhiqui,Sarita Piotrowski,,,,False,False
+119,Joffrey Baratheon,Jack Gleeson,,Baratheon,,True,False
+120,Jojen Reed,Thomas Brodie-Sangster,,,,False,False
+121,Jon Arryn,John Standing,,,,False,False
+122,Jon Snow,Kit Harington,,Stark,,True,False
+123,Jonos Bracken,Gerry O'Brien,,,,False,False
+124,Jorah Mormont,Iain Glen,,Mormont,,False,False
+125,Jory Cassel,Jamie Sives,,,,False,False
+126,Joyeuse Erenford,Kelly Long,,,,False,False
+127,Karl Tanner,Burn Gorman,,,,False,False
+128,Karsi,Birgitte Hjort Sørensen,,,,False,False
+129,Kayla,Pixie Le Knot,,,,False,False
+130,Kegs,Tim Landers,,,,False,False
+131,Kevan Lannister,Ian Gelder,,Lannister,,False,False
+132,Khal Drogo,Jason Momoa,,,,False,False
+133,Khal Moro,Joseph Naufahu,,,,False,False
+134,Khal Rhalko,Andrei Claude,,,,False,False
+135,King Joffrey Baratheon Dwarf,Raymond Griffiths,,,,False,False
+136,King Renly Baratheon Dwarf,Dean Whatton,,,,False,False
+137,King Robb Stark Dwarf,George Appleby,,,,False,False
+138,King Stannis Baratheon Dwarf,Maxwell Laird,,,,False,False
+139,King's Landing Rioter  1,Reg Wayment,,,,False,False
+140,King's Landing Rioter  2,Marko Juraga,,,,False,False
+141,King's Landing Rioter  3,Rea Separovic,,,,False,False
+142,Kinvara,Ania Bukstein,,,,False,False
+143,Kitty Frey,Lucy Hayes,,Frey,,False,False
+144,Knight of House Frey,Patrick Ryan,,,,False,False
+145,Knight of House Lynderly,Paddy Rocks,,,,False,False
+146,Kovarro,Steven Cole,,,,False,False
+147,Kraznys mo Nakloz,Dan Hildebrand,,,,False,False
+148,Kurleket,Kevin Keenan,,,,False,False
+149,Lady,,,Stark,,False,True
+150,Lady Crane,Essie Davis,,,,False,False
+151,Lancel Lannister,Eugene Simon,,Lannister,,False,False
+152,Lannister Captain,Aiden Condron,,,,False,False
+153,Lannister Captain,Richard Laing,,,,False,False
+154,Lannister Guardsman,Conor Delaney,,,,False,False
+155,Lannister Messenger,Simon Stewart,,,,False,False
+156,Lannister Scout,Chris Gallagher,,,,False,False
+157,Lead Dornish Guard,Christian Vit,,,,False,False
+158,Leaf,Kae Alexander,Octavia Selena Alexandru,,,False,False
+159,Lem Lemoncloak,Johannes Haukur Johannesson,,,,False,False
+160,Leo Lefford,Vinnie McCabe,,,,False,False
+161,Lhara,Sarine Sofair,,,,False,False
+162,Little Bird,Samuel Paul Small,,,,False,False
+163,Little Bird,Tristan Mercieca,,,,False,False
+164,Little Bird  3,Michael Nevin,,,,False,False
+165,Little Bird  4,Jesse Magee,,,,False,False
+166,Little Bird  5,Iona Clarke,,,,False,False
+167,Little Bird  6,Lucy Gallagher,,,,False,False
+168,Little Bird  7,Fionn Kernan,,,,False,False
+169,Loboda,Zachary Baharov,,,,False,False
+170,Locke,Noah Taylor,,,,False,False
+171,Lollys Stokeworth,Elizabeth Cadwallader,,,,False,False
+172,Lommy Greenhands,Eros Vlahos,,,,False,False
+173,Loras Tyrell,Finn Jones,,Tyrell,,False,False
+174,Lord Galbart Glover,Mark Coney,,,,False,False
+175,Lord Portan,Gordon Fulton,,,,False,False
+176,Lord Varys,Conleth Hill,,,,False,False
+177,Lordsport Dockhand,Jer O'Leary,,,,False,False
+178,Lothar Frey,Daniel Tuite,Tom Brooke,Frey,,False,False
+179,Loyal Night's Watchman  1,Steve Cash,,,,False,False
+180,Loyal Night's Watchman  2,Robert Fawsitt,,,,False,False
+181,Lyanna Mormont,Bella Ramsey,,Mormont,,False,False
+182,Lyanna Stark,Aisling Franciosi,,Stark,,False,False
+183,Lysa Arryn,Kate Dickie,,Arryn,,False,False
+184,Mace Tyrell,Roger Ashton-Griffiths,,Tyrell,,False,False
+185,Maester Aemon,Peter Vaughan,,Targaryen,,False,False
+186,Maester Cressen,Oliver Ford Davies,,,,False,False
+187,Maester Luwin,Donald Sumpter,,,,False,False
+188,Maester Wolkan,Richard Rycroft,,,,False,False
+189,Mag the Mighty,Neil Fingleton,,,,False,False
+190,Maggy,Jodhi May,,,,False,False
+191,Mago,Ivailo Dimitrov,,,,False,False
+192,Male Prostitute,Dennis Stokes,,,,False,False
+193,Malko,Adewale Akinnuoye-Agbaje,,,,False,False
+194,Mance Rayder,Ciarán Hinds,,,,False,False
+195,Mandon Moore,James Doran,,,,False,False
+196,Manservant,Conor Watters,,,,False,False
+197,Marei,Josephine Gillan,,,,False,False
+198,Margaery Tyrell,Natalie Dormer,,Tyrell,,False,False
+199,Margaery's Handmaiden,Aisling Jarrett-Gavin,,,,False,False
+200,Marillion,Emun Elliott,,,,False,False
+201,Martyn Lannister,Dean-Charles Chapman,,Lannister,,False,False
+202,Masha Heddle,Susie Kelly,,,,False,False
+203,Matthos Seaworth,Kerr Logan,,,,False,False
+204,Meera Reed,Ellie Kendrick,,,,False,False
+205,Meereen Slave Master,Laurence Doherty,,,,False,False
+206,Melessa Tarly,Samantha Spiro,,,,False,False
+207,Melisandre,Carice van Houten,,,,False,False
+208,Merchant Captain,Gary Pillai,,,,False,False
+209,Mero,Mark Killeen,,,,False,False
+210,Meryn Trant,Ian Beattie,,,,False,False
+211,Mhaegen,Antonia Christophers,,,,False,False
+212,Mikken,Boyd Rankin,,,,False,False
+213,Mirelle,Elisa Lasowski,,,,False,False
+214,Mirri Maz Duur,Mia Soteriou,,,,False,False
+215,Missandei,Nathalie Emmanuel,,,,False,False
+216,Mord,Ciaran Bermingham,,,,False,False
+217,Mossador,Reece Noi,,,,False,False
+218,Musician  1,Nanna Bryndís Hilmarsdottir,,,,False,False
+219,Musician  1,Jon Thor Birgisson,,,,False,False
+220,Musician  2,Ragnar Porhallsson,,,,False,False
+221,Musician  2,Orri P. Dyrason,,,,False,False
+222,Musician  3,Georg Holm,,,,False,False
+223,Musician  3,Arnar Rosenkranz Hilmarsson,,,,False,False
+224,Musician  4,Brynjar Leifsson,,,,False,False
+225,Musician  5,Kristján Kristjánsson,,,,False,False
+226,Mycah,Rhodri Hosking,,,,False,False
+227,Myranda,Charlotte Hope,,,,False,False
+228,Myrcella Baratheon,Aimee Richardson,Nell Tiger Free,Baratheon,,True,False
+229,Ned Umber,Harry Grasby,,Umber,,False,False
+230,Night's Watch Deserter,Barry John O'Connor,,,,False,False
+231,Night's Watch Messenger,Frank O'Sullivan,,,,False,False
+232,Night's Watch Officer,Dennis McKeever,,,,False,False
+233,Night's Watch Officer,Michael Stuart,,,,False,False
+234,Night's Watchman,Marcus Lamb,,,,False,False
+235,Night's Watchman,Michael Hooley,,,,False,False
+236,Night's Watchman,Patrick J Molloy,,,,False,False
+237,Night's Watchman  1,Michael Hayes,,,,False,False
+238,Night's Watchman  2,Ruairí Heading,,,,False,False
+239,Night's Watchman  2,Tony Flynn,,,,False,False
+240,Northman Rioter,Jed Murray,,,,False,False
+241,Nymeria,,,Stark,,False,True
+242,Nymeria Sand,Jessica Henwick,,Martell,,False,False
+243,Obara Sand,Keisha Castle-Hughes,,Martell,,False,False
+244,Oberyn Martell,Pedro Pascal,,Martell,,False,False
+245,Old Nan,Margaret John,,,,False,False
+246,Old Woman Prisoner,Gina Moxley,,,,False,False
+247,Olenna Tyrell,Diana Rigg,,Tyrell,,False,False
+248,Olly,Brenock O'Connor,,,,False,False
+249,Olyvar,Will Tudor,,,,False,False
+250,Orell,Mackenzie Crook,,,,False,False
+251,Ornela,Hannah John-Kamen,,,,False,False
+252,Osha,Natalia Tena,,,,False,False
+253,Othell Yarwyck,Brian Fortune,,,,False,False
+254,Pentoshi Servant,Rania Zouari,,,,False,False
+255,Petyr Baelish,Aidan Gillen,,,Littlefinger,False,False
+256,Podrick Payne,Daniel Portman,,,,False,False
+257,Polliver,Andy Kellegher,,,,False,False
+258,Prendahl na Ghezn,Ramon Tikaram,,,,False,False
+259,Pyat Pree,Ian Hanmore,,,,False,False
+260,Pypar,Josef Altin,,,,False,False
+261,Qhono,Staz Nair,,,,False,False
+262,Qhorin Halfhand,Simon Armstrong,,,,False,False
+263,Qotho,Dar Salim,,,,False,False
+264,Quaithe,Laura Pradelska,,,,False,False
+265,Qyburn,Anton Lesser,,,,False,False
+266,Rakharo,Elyes Gabel,,,,False,False
+267,Ramsay Snow,Iwan Rheon,,Bolton,,False,False
+268,Randyll Tarly,James Faulkner,,,,False,False
+269,Rast,Luke Barnes,,,,False,False
+270,Rattleshirt,Edward Dogliani,Ross O'Hennessy,,Lord of Bones,False,False
+271,Razdal mo Eraz,George Georgiou,,,,False,False
+272,Red Keep Stableboy,Hugo Culverhouse,,,,False,False
+273,Red Priestess,Melanie Liburd,,,,False,False
+274,Red Priestess,Rila Fukushima,,,,False,False
+275,Renly Baratheon,Gethin Anthony,,Baratheon,,False,False
+276,Rhaegal,,,Targaryen,,False,False
+277,Rhaegar Targaryen,Wilfred John Scolding,,Targaryen,,True,False
+278,Rhaego,,,,,False,False
+279,Rhaella Targaryen,Charlize Theron,,Targaryen,,True,False
+280,Rhaenys Targaryen,Eve Best,,Targaryen,,True,False
+281,Rickard Karstark,John Stahl,Steve Blount,,,False,False
+282,Rickard Stark,Wayne Foskett,,Stark,,False,False
+283,Rickon Stark,Art Parkinson,,Stark,,False,False
+284,Robb Stark,Richard Madden,,Stark,,True,False
+285,Robert Baratheon,Mark Addy,,Baratheon,,True,False
+286,Robett Glover,Tim McInnerny,,,,False,False
+287,Robin Arryn,Lino Facioli,,,,False,False
+288,Rodrik Cassel,Ron Donachie,,,,False,False
+289,Roose Bolton,Michael McElhatton,,Bolton,,False,False
+290,Rorge,Andy Beckwith,,,,False,False
+291,Ros,Esmé Bianco,,,,False,False
+292,Roslin Frey,Alexandra Dowling,,Frey,,False,False
+293,Royal Steward,Robert Sterne,,,,False,False
+294,Ryger Rivers,Bryan McCaugherty,,,,False,False
+295,Salladhor Saan,Lucian Msamati,,,,False,False
+296,Samwell Tarly,John Bradley,,,,False,False
+297,Sandor Clegane,Rory McCann,,,The Hound,False,False
+298,Sansa Stark,Sophie Turner,,Stark,,True,False
+299,Selyse Baratheon,Tara Fitzgerald,Sarah MacKeever,Baratheon,,False,False
+300,Septa Moelle,Maggie Hayes,,,,False,False
+301,Septa Mordane,Susan Brown,,,,False,False
+302,Septa Scolera,Mary Jordan,,,,False,False
+303,Septa Unella,Hannah Waddingham,,,,False,False
+304,Septon,Kenneth Hadley,,,,False,False
+305,Septon,Terry Byrne,,,,False,False
+306,Ser Endrew Tarth,Dez McMahon,,,,False,False
+307,Shae,Sibel Kekilli,,,,False,False
+308,Shagga,Mark Lewis Jones,,,,False,False
+309,Shaggydog,,,Stark,,False,True
+310,Shireen Baratheon,Kerry Ingram,,Baratheon,,False,False
+311,Silk King,Slavko Juraga,,,,False,False
+312,Smalljon Umber,Dean S. Jagger,,,,False,False
+313,Spice King,Nicholas Blane,,,,False,False
+314,Stannis Baratheon,Stephen Dillane,,Baratheon,,False,False
+315,Stark Bannerman,Michael Stuart,,,,False,False
+316,Stark Guard,Faolan Morgan,,,,False,False
+317,Stark Guard,Rick Burn,,,,False,False
+318,Stark Guard,David Sheehan,,,,False,False
+319,Stark Guard,Paul Monahan,,,,False,False
+320,Steelshanks Walton,Jamie Michie,,,,False,False
+321,Stevron Frey,Colin Carnegie,,Frey,,False,False
+322,Stiv,Stephen Don,,,,False,False
+323,Styr,Yuri Kolokolnikov,,,,False,False
+324,Summer,,,Stark,,False,True
+325,Syrio Forel,Miltos Yerolemou,,,,False,False
+326,Talisa Maegyr,Oona Chaplin,,,,False,False
+327,Talla Tarly,Rebecca Benson,,Tarly,,False,False
+328,Ternesio Terys,Gary Oliver,,,,False,False
+329,The Bear,Bart the Bear,,,,False,False
+330,The Night King,Richard Brake,Vladimir 'Furdo' Furdik,,,False,False
+331,The Tickler,Anthony Morris,,,,False,False
+332,The Waif,Faye Marsay,,,,False,False
+333,Thenn Warg,Joseph Gatt,,,,False,False
+334,Theon Greyjoy,Alfie Allen,,Greyjoy,,False,False
+335,Thin Man,Oengus MacNamara,,,,False,False
+336,Thoros of Myr,Paul Kaye,,,,False,False
+337,Three-Eyed Raven,Struan Rodger,Max von Sydow,,,False,False
+338,Timett,Tobias Winter,,,,False,False
+339,Tobho Mott,Andrew Wilde,,,,False,False
+340,Todder,Will O'Connell,,,,False,False
+341,Tomard,Phil Dixon,,,,False,False
+342,Tommen Baratheon,Callum Wharry,Dean-Charles Chapman,Baratheon,,True,False
+343,Tormund Giantsbane,Kristofer Hivju,,,,False,False
+344,Trystane Martell,Toby Sebastian,,Martell,,False,False
+345,Tycho Nestoris,Mark Gatiss,,,,False,False
+346,Tyene Sand,Rosabell Laurenti Sellers,,Martell,,False,False
+347,Tyrion Lannister,Peter Dinklage,,Lannister,,False,False
+348,Tywin Lannister,Charles Dance,,Lannister,,False,False
+349,Vala,Meena Rayann,,,,False,False
+350,Vardis Egen,Brendan McCormack,,,,False,False
+351,Varly,Graham Charles,,,,False,False
+352,Viserion,,,Targaryen,,False,True
+353,Viserys Targaryen,Harry Lloyd,,Targaryen,,True,False
+354,Walda Bolton,Elizabeth Webster,,Bolton,,False,False
+355,Walder Frey,David Bradley,,Frey,,False,False
+356,Wallen,Barry O'Connor,,,,False,False
+357,Warlock,Lottie Steer,,,,False,False
+358,Waymar Royce,Rob Ostlere,,,,False,False
+359,Wedding Band,Sigur Ros,,,,False,False
+360,White Walker,Ian Whyte,,,,False,False
+361,White Walker,Ross Mullan,,,,False,False
+362,White Walker,Tim Loane,,,,False,False
+363,White Walker  2,Spencer Wilding,,,,False,False
+364,Wight Wildling Girl,Claire Wright,,,,False,False
+365,Wildling Rioter,Michael Patrick,,,,False,False
+366,Will,Bronson Webb,,,,False,False
+367,Willem Lannister,Timothy Gibbons,,Lannister,,False,False
+368,Willis Wode,Ryan McKenna,,,,False,False
+369,Wine Merchant,Simon Lowe,,,,False,False
+370,Winterfell Shepherd,Donagh Deeney,,,,False,False
+371,Wun Wun,Ian Whyte,,,,False,False
+372,Wyllis,Sam Coleman,,,,False,False
+373,Xaro Xhoan Daxos,Nonso Anozie,,,,False,False
+374,Yara Greyjoy,Gemma Whelan,,Greyjoy,,False,False
+375,Yezzan zo Qaggaz,Enzo Cilenti,,,,False,False
+376,Ygritte,Rose Leslie,,,,False,False
+377,Yohn Royce,Rupert Vansittart,,,,False,False
+378,Yoren,Francis Magee,,,,False,False
+379,Young Benjen Stark,Matteo Elezi,,Stark,,False,False
+380,Young Cersei Lannister,Nell Williams,,Lannister,,False,False
+381,Young Lyanna Stark,Cordelia Hill,,Stark,,False,False
+382,Young Nan,Annette Tierney,,,,False,False
+383,Young Ned,Robert Aramayo,,Stark,,False,False
+384,Young Ned Stark,Sebastian Croft,,Stark,,False,False
+385,Young Rodrik Cassel,Fergus Leathem,,,,False,False
+386,Zanrush,Gerald Lepkowski,,,,False,False
